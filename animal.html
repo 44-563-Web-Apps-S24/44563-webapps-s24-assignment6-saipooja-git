@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Animal Game
+    </title>
+</head>
+
+<body>
+    <h1>Animal game by saipooja</h1>
+
+
+    <form>
+        <label for="form1_animalName">The Animal Type </label>
+        <input type="password" id="animalName" value="Chicken" name="form1_animalName" min=10 max=50 step=2 value=30>
+        <br>
+
+        <label for="form1_guess">Guess the Animal: </label>
+        <input type="text" id="guessAnimal" name="form1_guess" autofocus> <br>
+
+        <button type="button" onclick="checkAnimal()" >Check the Guess</button>
+
+    </form>
+
+
+    <p id="resultHolder">Correct: 0 | Wrong: 0</p>
+
+    <script>
+        let wrong = 0;
+        let correct = 0;
+        function checkAnimal() {
+
+            //console.log("Getting form values")
+            const animalName = document.getElementById("animalName").value
+            const guessAnimal = document.getElementById("guessAnimal").value
+            // confirmed = confirm("Are these the values? "+The animal type+" and "+)
+            //        <!--<input type="button" onclick="checkAnimal()" value="Get the values...">
+
+            if (animalName.toLowerCase() == guessAnimal.toLowerCase()) {
+                correct++;
+                alert("Ruff ruff");
+            }
+            else {
+                wrong++;
+                alert("Grrrr");
+            }
+            // update the result element
+            const resultElement = document.getElementById("resultHolder");
+            resultElement.innerHTML = `correct: ${correct}, Wrong: ${wrong}`;
+}
+
+<div id="imageContainer">
+    <img id="drinkImage" src="image1.jpg" width="150" height="150" onclick="selectImage()">
+</div>
+
+</script>
+</body>
+</html>
