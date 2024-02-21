@@ -10,7 +10,9 @@
 <body>
     <h1>Animal game by saipooja</h1>
 
-
+    <a href="packing.html">Packing page</a>
+    <br>
+    <a href="discount.html">Discount page</a>
     <form>
         <label for="form1_animalName">The Animal Type </label>
         <input type="password" id="animalName" value="Chicken" name="form1_animalName" min=10 max=50 step=2 value=30>
@@ -23,7 +25,7 @@
 
     </form>
 
-
+    
     <p id="resultHolder">Correct: 0 | Wrong: 0</p>
 
     <script>
@@ -45,15 +47,48 @@
                 wrong++;
                 alert("Grrrr");
             }
+            // Bonus
+            if (wrong > correct) {
+                document.getElementById('animalForm').onclick = function() {
+                    alert('Sorry, too many wrong guesses.');
+                };
+            }
             // update the result element
             const resultElement = document.getElementById("resultHolder");
             resultElement.innerHTML = `correct: ${correct}, Wrong: ${wrong}`;
+
+            
 }
 
-<div id="imageContainer">
-    <img id="drinkImage" src="image1.jpg" width="150" height="150" onclick="selectImage()">
-</div>
 
 </script>
+<div id="imageContainer">
+    <img src="smirnoff.jpg" id="smirnoffImage"  width="150" height="150" onclick="selectImage()">
+</div>
+<script>
+    let imageId=1;
+    function selectImage() {
+        const image= document.getElementById('smirnoffImage');
+        switch (imageId) {
+            case 1:
+               image.src = 'Lemonade.jpg';
+                imageId = 2;
+                break;
+            case 2:
+                image.src = 'Pepsi.jpg';
+                imageId = 3;
+                break;
+            case 3:
+                image.src = 'amarulaa.png';
+                imageId = 1;
+                break;
+            default:
+                break;
+        }
+
+    }
+</script>
+<button onclick="selectImage()">Change Image</button>
+
 </body>
 </html>

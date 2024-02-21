@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        discount calculations
+    </title>
+</head>
+
+<body>
+
+    <h2>Getting Input</h2>
+
+    <form>
+        <label for="price">Enter price per </label>
+        <input type="number" id="price" name="price" value="10"> <br>
+
+        <label for="count">Enter the number of items: </label>
+        <input type="number" id="count" name="Enter the number of items" value="9"> <br>
+
+        <label for="reductions">Enter the number of items: </label>
+        <input type="number" id="reductions" name="Enter the discount percent" value="5"> <br>
+
+        <input type="button" onclick="discount()" value="show conversions">
+        <p id="result">This text will be replaced </p>
+
+
+    </form>
+    <form>
+        <label>
+            <input type="radio" name="operation" value="sum" onClick="chooseOp()"> sum
+        </label><br>
+        <label>
+            <input type="radio" name="operation" value="mult" onClick="chooseOp()"> mult
+        </label><br>
+        <label>
+            <input type="radio" name="operation" value="exp" onClick="chooseOp()"> exp
+        </label><br>
+        <p id="result1">result</p>
+    </form>
+
+</body>
+<script>
+    function discount() {
+        var price = parseInt(document.getElementById("price").value);
+        var count = parseInt(document.getElementById("count").value);
+        var reductions = parseInt(document.getElementById("reductions").value);
+        var myOutput = "";
+        for (var i = 0; i < 5; i++) {
+            let total = (price * count) - (price * (reductions / 100));
+            myOutput += i + "% is " + total.toFixed(2) + "; ";
+            reductions++;
+        }
+
+        document.getElementById("result").innerText = myOutput;
+
+    }
+
+
+    function chooseOp() {
+
+        var price = parseInt(document.getElementById("price").value);
+        var discount = parseInt(document.getElementById("reductions").value);
+        var operation = document.querySelector('input[name="operation"]:checked').value;
+        var result;
+        // var operationSymbol;
+
+        switch (operation) {
+            case "sum":
+                result = price + discount;
+                // operationSymbol = "+";
+                break;
+            case "mult":
+                result = price * discount;
+                // operationSymbol = "*";
+                break;
+            case "exp":
+                result = price ** discount;
+                // operationSymbol = "**";
+                break;
+            default:
+                result = "Invalid operation";
+                // operationSymbol = "";
+                break;
+        }
+
+        var outputMessage = ` ${operation} of ${price} and ${discount} is  ${result}`;
+        document.getElementById("result1").textContent = "Result: " + outputMessage;
+    }
+
+</script>
+
+
+
+</html>
